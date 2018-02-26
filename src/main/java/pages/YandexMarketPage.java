@@ -23,15 +23,13 @@ public class YandexMarketPage {
     @FindBy (xpath = "//a[text()='по цене']/parent::div")
     private WebElement priceSortBtn;
 
-    @FindBy (css = "div.price")
+    @FindBy (css = "div.n-snippet-card2__main-price div.price")
     private List<WebElement> productPrices;
 
     public YandexMarketPage(final WebDriver driver) {
         this.driver = driver;
         initElements(driver, this);
     }
-
-
 
     public void sortByPrice(){
         priceSortBtn.click();
@@ -48,8 +46,6 @@ public class YandexMarketPage {
     public List<String> getProductPrices() throws InterruptedException {
 
         Thread.sleep(2000);
-//        (new WebDriverWait(driver,10))
-//                .until(ExpectedConditions.visibilityOfAllElements(productPrices));
 
         return (List)productPrices.stream().map((e) -> {
             return e.getText();

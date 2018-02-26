@@ -10,8 +10,6 @@ import pages.YandexMarketPage;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.codeborne.selenide.Selenide.$$;
-
 public class YandexMarketTests extends BaseTest{
 
     private static YandexMarketPage yandexMarketPage;
@@ -27,29 +25,47 @@ public class YandexMarketTests extends BaseTest{
     }
 
     @Test
-    public void SortingTest() throws InterruptedException {
+    public void ProductsCountTest(){
+        int productsCount = yandexMarketPage.getProductsList().size();
+        Assert.assertEquals(productsCount,12);
+    }
 
-        int productsListSize = yandexMarketPage.getProductsList().size();
-        Assert.assertEquals(productsListSize,12);
-
+    @Test
+    public void SortingAscTest() throws InterruptedException {
         yandexMarketPage.sortByPrice();
         Assert.assertTrue(yandexMarketPage.getPriceSortBtnAtr("class").contains(SORT_ASC_CLASS));
         Assert.assertTrue(yandexMarketPage.getPriceSortBtnAtr("class").contains(ACTIVE_SORT_BTN_CLASS));
 
         List<String> ascSortedPrices = yandexMarketPage.getProductPrices();
-        List<String> expectedSortList =  ascSortedPrices.stream()
-                .sorted()
-                .collect(Collectors.toList());
+        List<String> expectedSortList = GetAscSortedList(ascSortedPrices);
         Assert.assertEquals(ascSortedPrices,expectedSortList);
+
+    }
+
+    @Test
+    public void SortingDescTest() throws InterruptedException {
 
         yandexMarketPage.sortByPrice();
         Assert.assertTrue(yandexMarketPage.getPriceSortBtnAtr("class").contains(SORT_DESC_CLASS));
+        Assert.assertTrue(yandexMarketPage.getPriceSortBtnAtr("class").contains(ACTIVE_SORT_BTN_CLASS));
 
         List<String> descSortedPrices = yandexMarketPage.getProductPrices();
-        expectedSortList =  descSortedPrices.stream()
-                .sorted((o1, o2) -> -o1.compareTo(o2))
-                .collect(Collectors.toList());
+        List<String> expectedSortList = GetDescSortedList(descSortedPrices);
+
         Assert.assertEquals(descSortedPrices,expectedSortList);
 
     }
+
+    public List<String> GetAscSortedList(List<String> list){
+        return list.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public List<String> GetDescSortedList(List<String> list){
+        return list.stream()
+                .sorted((o1, o2) -> -o1.compareTo(o2))
+                .collect(Collectors.toList());
+    }
+
 }
