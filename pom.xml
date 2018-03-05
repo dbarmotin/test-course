@@ -58,6 +58,32 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
+    <profiles>
+        <profile>
+            <id>localUbuntu</id>
+            <properties>
+                <driverHome>src/main/resources/chromedriver</driverHome>
+            </properties>
+        </profile>
+        <profile>
+            <id>localWindows</id>
+            <properties>
+                <driverHome>src/main/resources/chromedriver.exe</driverHome>
+            </properties>
+        </profile>
+        <profile>
+            <id>travis</id>
+            <properties>
+                <driverHome>/usr/bin/chromedriver</driverHome>
+            </properties>
+        </profile>
+    </profiles>
 </project>
