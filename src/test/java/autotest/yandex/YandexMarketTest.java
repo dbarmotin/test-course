@@ -27,7 +27,7 @@ public class YandexMarketTest extends BaseTest{
     @Test
     public void ProductsCountTest(){
         int productsCount = yandexMarketPage.getProductsList().size();
-        Assert.assertEquals(productsCount,12);
+        Assert.assertEquals(productsCount,44);
     }
 
     @Test
