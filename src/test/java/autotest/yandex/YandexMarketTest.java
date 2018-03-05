@@ -10,7 +10,7 @@ import pages.YandexMarketPage;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class YandexMarketTests extends BaseTest{
+public class YandexMarketTest extends BaseTest{
 
     private static YandexMarketPage yandexMarketPage;
     private static String SORT_ASC_CLASS = "n-filter-sorter_sort_asc";

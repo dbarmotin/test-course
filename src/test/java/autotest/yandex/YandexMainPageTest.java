@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.YandexPage;
 
-public class YandexMainPageTests extends BaseTest {
+public class YandexMainPageTest extends BaseTest {
 
     private static YandexPage yandexPage;
 

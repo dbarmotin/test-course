@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 15.076 sec <<< FAILURE! - in TestSuite
+ProductsCountTest(autotest.yandex.YandexMarketTest)  Time elapsed: 0.023 sec  <<< FAILURE!
+java.lang.AssertionError: expected [12] but found [48]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertEquals(Assert.java:123)
+	at org.testng.Assert.assertEquals(Assert.java:370)
+	at org.testng.Assert.assertEquals(Assert.java:380)
+	at autotest.yandex.YandexMarketTest.ProductsCountTest(YandexMarketTest.java:30)
+
+SortingAscTest(autotest.yandex.YandexMarketTest)  Time elapsed: 2.677 sec  <<< FAILURE!
+java.lang.AssertionError: Lists differ at element [0]: 12 395 ₽ != 18 890 ₽ expected [12 395 ₽] but found [18 890 ₽]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertEquals(Assert.java:123)
+	at org.testng.Assert.assertEquals(Assert.java:549)
+	at org.testng.Assert.assertEquals(Assert.java:514)
+	at autotest.yandex.YandexMarketTest.SortingAscTest(YandexMarketTest.java:41)
+
