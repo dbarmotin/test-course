@@ -19,12 +19,11 @@ public class BaseTest {
     protected static String driverHome;
     @BeforeSuite
     public void DriverStart() throws IOException {
+        System.getProperty("aplication.properties");
         Properties property = new Properties();
-        InputStream  is = new FileInputStream("src/main/resources/aplication.properties");
+        InputStream  is = new FileInputStream("target/classes/application.properties");
         property.load(is);
-        driverHome = property.getProperty(driverHome);
-       // System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
-       // System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+        driverHome = property.getProperty("driverHome");
         System.setProperty("webdriver.chrome.driver",driverHome);
 
 
